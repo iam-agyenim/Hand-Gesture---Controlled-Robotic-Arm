@@ -35,5 +35,5 @@ Ensure the xArm and your webcam are properly configured and connected to your co
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-##Acknowledgement
+##Acknowledgement:
 Credit to Pavly Hamin & Dhyey

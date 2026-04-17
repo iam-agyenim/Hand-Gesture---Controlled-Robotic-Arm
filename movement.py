@@ -15,16 +15,14 @@ workspace_height = 720
 workspace_width = 1024
 
 def map_coordinates_to_angles(x, y, width, height):
-    x_normalized = (x - width / 2) / (width / 2) * 100
-    y_normalized = (y - height / 2) / (height / 2) * 100
+    x_clamped = np.clip(x, 0, width)
+    y_clamped = np.clip(y, 0, height)
 
-    min_angle_deg_x, max_angle_deg_x = -360, 360  
+    min_angle_deg_x, max_angle_deg_x = -360, 360
     min_angle_deg_y, max_angle_deg_y = -100, 100
 
-    x_angle = np.interp(x_normalized, [-1, 1], [min_angle_deg_x, max_angle_deg_x]) * DEGREES_TO_RADIANS
-    y_angle = np.interp(y_normalized, [-1, 1], [min_angle_deg_y, max_angle_deg_y]) * DEGREES_TO_RADIANS
-
-    print(x,y)
+    x_angle = np.interp(x_clamped, [0, width], [min_angle_deg_x, max_angle_deg_x])
+    y_angle = np.interp(y_clamped, [0, height], [min_angle_deg_y, max_angle_deg_y])
 
     return x_angle, y_angle
 

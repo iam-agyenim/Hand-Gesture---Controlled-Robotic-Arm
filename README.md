@@ -18,15 +18,33 @@ pip install opencv-python mediapipe numpy xArm-Python-SDK
 ```
 
 ## Usage
-To run the script, navigate to the script's directory in the terminal and execute:
+To run the scripts, navigate to the script's directory in the terminal and execute:
 ```bash
 python gesture.py
+python movement.py
+python rotation.py
+python farming.py
 ```
-Ensure the xArm and your webcam are properly configured and connected to your computer. The script should automatically begin tracking your hand movements and move the robotic arm accordingly.
+Ensure the xArm and your webcam are properly configured and connected to your computer. The scripts should automatically begin tracking your hand movements and move the robotic arm accordingly.
+
+### farming.py — Pick & Place for Farm Harvesting
+A hand-gesture-controlled pick-and-place script designed for farming tasks such as harvesting fruit, transplanting seedlings, or sorting produce.
+
+**Gestures:**
+| Gesture | Action |
+|---------|--------|
+| Open hand | **Navigate** — move the arm over the target using wrist tracking |
+| Pinch (thumb + index) | **Pick** — lower the arm, grip the item, and lift |
+| Peace sign (index + middle up) | **Place** — move to the drop-off location and release |
+| Closed fist | **Home** — return the arm to its home position and open the gripper |
 
 ## Function Descriptions
 - **map_coordinates_to_angles(x, y, width, height)**: Converts the webcam coordinates to angles for the robotic arm.
 - **is_hand_closed(landmarks)**: Determines if the hand gesture is closed based on finger positions.
+- **map_coordinates_to_position(x, y, width, height)**: Converts webcam coordinates to Cartesian positions for the arm end-effector.
+- **count_extended_fingers(landmarks)**: Counts the number of extended fingers for gesture classification.
+- **is_pinch_gesture(landmarks)**: Detects a pinch gesture (thumb and index finger close together).
+- **is_peace_sign(landmarks)**: Detects a peace/victory sign (index and middle fingers extended).
 
 ## Troubleshooting
 - If the camera feed does not appear, ensure that your webcam is properly connected and accessible.
